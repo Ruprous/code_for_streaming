@@ -10,37 +10,19 @@
    pip install pyautogui
    ```
 
-2. 以下のコードをPythonファイル（例: `mouse_capture.py`）に保存します。
-
-   ```python
-   # Copyright (c) 2024 Ruprous
-
-   import pyautogui
-   import time
-
-   print("マウスをキャプチャしたい場所に移動してください。Ctrl+Cで停止します。")
-   try:
-       while True:
-           x, y = pyautogui.position()  # 現在のマウス座標を取得
-           print(f"現在の位置: x={x}, y={y}")
-           time.sleep(1)
-   except KeyboardInterrupt:
-       print("\n座標の確認を終了しました。")
-   ```
-
-3. スクリプトを実行します。
+2. スクリプトを実行します。
    ```bash
    python mouse_capture.py
    ```
 
-4. コンソールにリアルタイムでマウス座標が表示されます。
+3. コンソールにリアルタイムでマウス座標が表示されます。
    ```
    現在の位置: x=100, y=200
    現在の位置: x=120, y=210
    ...
    ```
 
-5. 必要な座標を確認したら、`Ctrl+C`を押してスクリプトを終了します。
+6. 必要な座標を確認したら、`Ctrl+C`を押してスクリプトを終了します。
 
 ---
 
