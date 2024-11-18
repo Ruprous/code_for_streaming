@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube ライブコメント</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #76c7c0;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px;
+        }
+        li {
+            background: white;
+            border: 1px solid #ddd;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>リアルタイム コメント表示</h1>
+    </header>
+    <ul id="comment-list">
+        <!-- コメントがここに表示される -->
+        {% for comment in comments %}
+        <li>{{ comment }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
