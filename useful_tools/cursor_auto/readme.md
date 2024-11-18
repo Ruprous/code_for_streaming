@@ -12,7 +12,7 @@
 
 2. スクリプトを実行します。
    ```bash
-   python mouse_capture.py
+   python cursor_auto.py
    ```
 
 3. コンソールにリアルタイムでマウス座標が表示されます。
