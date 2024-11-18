@@ -98,8 +98,8 @@ signal_thread = threading.Thread(target=update_signal_state)
 signal_thread.daemon = True
 signal_thread.start()
 
-# 自分の名前は固定
-self_name = "Ruprous"
+# 自分の名前をself_nameにいれてちょ
+self_name = "YourNameHere"
 self_signal_text = ""
 opponent_signal_text = ""
 
