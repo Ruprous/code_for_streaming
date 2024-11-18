@@ -1,0 +1,2 @@
+# code_for_streaming
+OBSでの配信に使えるpythonコードなど
