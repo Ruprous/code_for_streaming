@@ -1,7 +1,7 @@
 #©2024 Ruprous
 import os
 from tkinter import Tk
-from tkinter.filedialog import askdirectory
+from tkinter.filedialog import askdirectory, asksaveasfilename
 from PIL import Image, ImageOps
 
 def get_image_files(directory):
@@ -67,5 +67,13 @@ if __name__ == "__main__":
     if not input_directory:
         print("ディレクトリが選択されませんでした。")
     else:
-        output_path = input("出力するファイル名（例: output.png）を入力してください: ").strip()
-        arrange_images_with_margin(input_directory, output_path, fixed_width=3000)
+        # Tkinterを使って保存場所と名前を選択
+        output_path = asksaveasfilename(
+            title="保存先とファイル名を選択してください",
+            defaultextension=".png",
+            filetypes=[("PNG files", "*.png"), ("All files", "*.*")]
+        )
+        if not output_path:
+            print("保存先が選択されませんでした。")
+        else:
+            arrange_images_with_margin(input_directory, output_path, fixed_width=3000)
