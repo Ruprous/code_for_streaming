@@ -26,8 +26,23 @@ def arrange_images_with_margin(input_directory, output_path, fixed_width=3000):
             break
         print("マージンは0〜300の範囲内で指定してください。")
     
+    # 背景の選択
+    while True:
+        background_choice = input("背景を透明にしますか？(yes/no): ").strip().lower()
+        if background_choice in ("yes", "no"):
+            break
+        print("yes または no を入力してください。")
+    
+    # 背景色とモードの設定
+    if background_choice == "yes":
+        canvas_mode = "RGBA"
+        background_color = (0, 0, 0, 0)  # 透明
+    else:
+        canvas_mode = "RGB"
+        background_color = (0, 0, 0)  # 黒
+
     # 画像を開く
-    images = [Image.open(path) for path in image_paths]
+    images = [Image.open(path).convert(canvas_mode) for path in image_paths]
     
     # 横幅を固定し、各画像のサイズを計算
     single_size = (fixed_width - (columns - 1) * margin) // columns
@@ -47,14 +62,14 @@ def arrange_images_with_margin(input_directory, output_path, fixed_width=3000):
     canvas_height = rows * single_size + (rows - 1) * margin
     
     # 新しいキャンバスを作成
-    canvas = Image.new("RGB", (canvas_width, canvas_height), color="white")
+    canvas = Image.new(canvas_mode, (canvas_width, canvas_height), color=background_color)
     
     # キャンバスに画像を貼り付け
     for idx, img in enumerate(resized_images):
         row, col = divmod(idx, columns)
         x = col * (single_size + margin)
         y = row * (single_size + margin)
-        canvas.paste(img, (x, y))
+        canvas.paste(img, (x, y), mask=img if canvas_mode == "RGBA" else None)
     
     # 保存（PNG形式で出力）
     canvas.save(output_path, format="PNG")
@@ -77,3 +92,4 @@ if __name__ == "__main__":
             print("保存先が選択されませんでした。")
         else:
             arrange_images_with_margin(input_directory, output_path, fixed_width=3000)
+
