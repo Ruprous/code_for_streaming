@@ -72,11 +72,6 @@ images/
 └── image4.bmp
 ```
 
-### コマンド例
-```bash
-python arrange_images.py
-```
-
 ### 操作例
 1. エクスプローラーが表示され、`images/` ディレクトリを選択。
 2. エクスプローラーが表示され、保存先フォルダとファイル名を選択（例: `result.png`）。
