@@ -1,6 +1,7 @@
 #©2024 Ruprous
-
 import os
+from tkinter import Tk
+from tkinter.filedialog import askdirectory
 from PIL import Image, ImageOps
 
 def get_image_files(directory):
@@ -59,7 +60,12 @@ def arrange_images_with_margin(input_directory, output_path, fixed_width=3000):
     canvas.save(output_path, format="PNG")
     print(f"画像を保存しました: {output_path}")
 
-# 使用例
-input_directory = "path/to/your/directory"  # 画像が入っているディレクトリを指定
-output_path = "output.png"
-arrange_images_with_margin(input_directory, output_path, fixed_width=3000)
+if __name__ == "__main__":
+    # Tkinterを使ってディレクトリを選択
+    Tk().withdraw()  # GUIウィンドウを非表示にする
+    input_directory = askdirectory(title="画像が保存されているディレクトリを選択してください")
+    if not input_directory:
+        print("ディレクトリが選択されませんでした。")
+    else:
+        output_path = input("出力するファイル名（例: output.png）を入力してください: ").strip()
+        arrange_images_with_margin(input_directory, output_path, fixed_width=3000)
